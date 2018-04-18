@@ -1,0 +1,12 @@
+export const EMAIL_CHANGED = 'email_changed';
+export const PASSWORD_CHANGED = 'password:changed';
+export const LOGIN_USER_SUCCESS = 'login_user_success';
+export const LOGIN_USER_FAIL = 'login_user_fail';
+export const LOGIN_USER = 'login_user';
+export const CONTACT_UPDATE = 'contact_update';
+export const CONTACT_CREATE = 'contact_create';
+export const CONTACTS_FETCH_SUCCESS = 'contacts_fetch_success';
+export const CONTACT_SAVE_SUCCESS = 'contact_save_success';
+export const USER_CREATE = 'user_create';
+export const SIGN_UP_USER = 'sign_up_user';
+export const SIGN_UP_SUCCESS = 'sign_up_success';
