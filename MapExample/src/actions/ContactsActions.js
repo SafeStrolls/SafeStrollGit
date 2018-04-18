@@ -58,7 +58,6 @@ export const contactSave = ({ name, phone, uid }) => {
       dispatch({ type: CONTACT_SAVE_SUCCESS });
       Actions.pop();
     });
-    //Actions.contactList();
   };
 };
 

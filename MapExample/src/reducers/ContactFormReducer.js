@@ -1,4 +1,8 @@
-import { CONTACT_UPDATE, CONTACT_CREATE, CONTACT_SAVE_SUCCESS } from '../actions/types';
+import {
+  CONTACT_UPDATE,
+  CONTACT_CREATE,
+  CONTACT_SAVE_SUCCESS
+} from '../actions/types';
 
 const INITIAL_STATE = {
   name: '',

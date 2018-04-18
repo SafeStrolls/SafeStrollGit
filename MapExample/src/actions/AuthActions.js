@@ -6,7 +6,9 @@ import { EMAIL_CHANGED,
          LOGIN_USER_FAIL,
          LOGIN_USER,
          SIGN_UP_USER,
-         SIGN_UP_SUCCESS
+         SIGN_UP_SUCCESS,
+         PROFILE_UPDATE,
+         PROFILE_SAVE_SUCCESS
         } from './types';
 
 export const emailChanged = (text) => {
@@ -20,6 +22,12 @@ export const passwordChanged = (text) => {
   return {
     type: PASSWORD_CHANGED,
     payload: text
+  };
+};
+export const profileUpdate = ({ prop, value }) => {
+  return {
+    type: PROFILE_UPDATE,
+    payload: { prop, value }
   };
 };
 
@@ -64,6 +72,23 @@ export const signUpUser = ({ email, password }) => {
       // });
   };
 };
+export const profileSave = ({ email, password }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    //const newEmail = currentUser.updateEmail(email)
+    const newPassword = currentUser.updatePassword(password)
+      .then(() => {
+        loginUser({ email, newPassword });
+        dispatch({ type: PROFILE_SAVE_SUCCESS });
+        Actions.pop();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      //Actions.myProfile();
+    };
+  };
 
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });

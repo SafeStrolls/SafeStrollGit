@@ -10,3 +10,5 @@ export const CONTACT_SAVE_SUCCESS = 'contact_save_success';
 export const USER_CREATE = 'user_create';
 export const SIGN_UP_USER = 'sign_up_user';
 export const SIGN_UP_SUCCESS = 'sign_up_success';
+export const PROFILE_UPDATE = 'profile_update';
+export const PROFILE_SAVE_SUCCESS = 'profile_save_success';
