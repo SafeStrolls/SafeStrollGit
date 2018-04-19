@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ListView } from 'react-native';
+import { ListView, StyleSheet } from 'react-native';
 import { contactsFetch } from '../actions';
-import { Card, CardSection, Button } from './common';
+import { Card, CardSection, Button, Input } from './common';
 import ListItem from './ListItem';
 
 class ContactList extends Component {
