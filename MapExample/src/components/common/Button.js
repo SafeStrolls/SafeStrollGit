@@ -28,8 +28,8 @@ const styles = {
     alignSelf: 'stretch',
     backgroundColor: '#252579',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#fffc00', //#007aff is the old blue color
+    borderWidth: 0,
+    borderColor: '#fff', //#007aff is the old blue color
     marginLeft: 5,
     marginRight: 5
   }

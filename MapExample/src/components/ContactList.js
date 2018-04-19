@@ -116,7 +116,7 @@ class ContactList extends Component {
             />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{backgroundColor: 'none'}}>
             {this.startButton()}
         </CardSection>
         <CardSection>

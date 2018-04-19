@@ -87,10 +87,10 @@ class LoginForm extends Component {
           {this.renderButton()}
         </CardSection>
 
-        <CardSection style={{borderRadius: 15, marginTop: 20, padding: 10}}>
+        <CardSection style={{borderRadius: 15, marginTop: 20, padding: 6}}>
           <View>
             <Text style={styles.textStyle}>
-              Do you not have an account yet?
+              Do you not have an account?
             </Text>
           </View>
           {this.signUpButton()}
