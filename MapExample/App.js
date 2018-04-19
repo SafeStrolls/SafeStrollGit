@@ -19,7 +19,17 @@ class App extends Component {
     };
 
 firebase.initializeApp(config);
-  }
+
+//lagt till detta under för att kunna logga ut
+// firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       this.setState({ loggedIn: true });
+//     } else {
+//       this.setState({ loggedIn: false });
+//     }
+//   });
+}
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 

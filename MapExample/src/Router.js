@@ -1,5 +1,6 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { StyleSheet } from 'react-native';
+import { Scene, Router, Actions, TabIcon } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import ContactList from './components/ContactList';
 import ContactCreate from './components/ContactCreate';
@@ -10,6 +11,8 @@ import Start from './components/Start';
 import MyProfile from './components/MyProfile';
 import ProfileEdit from './components/ProfileEdit';
 import Directions from './components/Directions';
+import GetAddress from './components/GetAddress';
+import GoingHome from './components/GoingHome';
 
 const RouterComponent = () => {
   return (
@@ -29,55 +32,102 @@ const RouterComponent = () => {
           />
         </Scene>
 
-        <Scene key="main">
-          <Scene
-            rightTitle="Add"
-            onRight={() => Actions.contactCreate()}
-            key="contactList"
-            component={ContactList}
-            title="My network"
-            initial
-          />
-          <Scene
-            key="contactCreate"
-            component={ContactCreate}
-            title="Create contact"
-          />
-          <Scene
-            key="contactInfo"
-            component={ContactInfo}
-            title="Contact info"
-            onRight={() => Actions.contactEdit()}
-            rightTitle="Edit"
+        <Scene key="main" hideNavBar>
 
-          />
+          <Scene
+            key="mainTabbar"
+            tabs
+            tabBarStyle={styles.tabBar}
+          >
+
+          <Scene
+            key="startTab"
+            title="Start"
+            icon={TabIcon}
+          >
             <Scene
-              key="contactEdit"
-              component={ContactEdit}
-              title="Edit Contact"
-            />
-            <Scene
-              key="start"
+              key="startPage"
               component={Start}
-              title="Go home"
+            />
+
+          </Scene>
+
+            <Scene
+              key="networkTab"
+              title="My Network"
+              icon={TabIcon}
+            >
+
+            <Scene
+              rightTitle="Add"
+              onRight={() => Actions.contactCreate()}
+              key="contactList"
+              component={ContactList}
+              title="My network"
+              initial
             />
             <Scene
-              key="direction"
-              component={Directions}
-              title="Get direction"
+              key="contactCreate"
+              component={ContactCreate}
+              title="Create contact"
+              hideTabBar
+            />
+            <Scene
+              key="contactInfo"
+              component={ContactInfo}
+              title="Contact info"
+              onRight={() => Actions.contactEdit()}
+              rightTitle="Edit"
+              hideTabBar
+
+            />
+              <Scene
+                key="contactEdit"
+                component={ContactEdit}
+                title="Edit Contact"
+                hideTabBar
+              />
+
+              <Scene
+                      key="start"
+                      component={Start}
+                      title="Go home"
+              />
+
+            </Scene>
+
+            <Scene
+              key="goingHome"
+              component={GoingHome}
+              title="Walk home"
+            />
+            <Scene
+              key="address"
+              component={GetAddress}
+              title="Search for address"
             />
             <Scene
               key="myProfile"
-              component={MyProfile}
-              title="My profile"
-              onRight={() => Actions.profileEdit()}
-              rightTitle="Edit password"
-            />
+              title="My Profile"
+              icon={TabIcon}
+            >
             <Scene
-              key="profileEdit"
-              component={ProfileEdit}
-              title="Edit my profile"
+                    key="myProfile"
+                    component={MyProfile}
+                    title="My profile"
+                    onRight={() => Actions.profileEdit()}
+                    rightTitle="Edit password"
             />
+                  <Scene
+                    key="profileEdit"
+                    component={ProfileEdit}
+                    title="Edit my profile"
+                    hideTabBar
+                  />
+
+            </Scene>
+
+            </Scene>
 
           </Scene>
 
@@ -88,5 +138,16 @@ const RouterComponent = () => {
 
   );
 };
+
+const styles = StyleSheet.create({
+  tabBar: {
+    //backgroundColor: '#d1d1d1',
+    borderTopWidth: 1,
+    padding: 5,
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 }
+  }
+});
 
 export default RouterComponent;

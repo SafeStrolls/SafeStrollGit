@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
@@ -15,6 +16,8 @@ class LoginForm extends Component {
   }
 
   onButtonPress() {
+    console.log('currentUser nedan:');
+    console.log(firebase.auth().currentUser);
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
@@ -58,9 +61,11 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
-        <View style={{ alignItems: 'center', opacity: 0.5, borderRadius: 15}}>
-        <Image source={{uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1352737-200.png'}}
-                style={{width: 200, height: 170}} />
+        <View style={{ alignItems: 'center', opacity: 0.5, borderRadius: 15 }}>
+        <Image
+            source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1352737-200.png' }}
+            style={{ width: 200, height: 170 }}
+        />
         </View>
         <CardSection style={styles.cardSectionStyle}>
           <Input
@@ -83,11 +88,11 @@ class LoginForm extends Component {
 
           {this.renderError()}
 
-        <CardSection style={{backgroundColor: 'none', marginTop:10}}>
+        <CardSection style={{ backgroundColor: 'transparent', marginTop: 10 }}>
           {this.renderButton()}
         </CardSection>
 
-        <CardSection style={{borderRadius: 15, marginTop: 20, padding: 6}}>
+        <CardSection style={{ borderRadius: 15, marginTop: 20, padding: 6 }}>
           <View>
             <Text style={styles.textStyle}>
               Do you not have an account?

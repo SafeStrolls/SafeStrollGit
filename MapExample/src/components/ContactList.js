@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import { ListView, StyleSheet } from 'react-native';
 import { contactsFetch } from '../actions';
-import { Card, CardSection, Button, Input } from './common';
+import { Card, CardSection, Input } from './common';
 import ListItem from './ListItem';
 
 class ContactList extends Component {
@@ -20,21 +19,6 @@ class ContactList extends Component {
     // this.props is still the old set of props
 
     this.createDataSource(nextProps);
-  }
-
-  startButton() {
-    return (
-      <Button onPress={() => Actions.start()}>
-        Start
-      </Button>
-    );
-  }
-  myProfileButton() {
-    return (
-      <Button onPress={() => Actions.myProfile()}>
-        My Profile
-      </Button>
-    );
   }
 
   formatData(data) {
@@ -108,19 +92,12 @@ class ContactList extends Component {
             value={this.props.search}
           />
       </CardSection>
-        <CardSection>
+        <CardSection style={{ borderRadius: 15, marginTop: 5 }}>
             <ListView
                   enableEmptySections
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}
             />
-        </CardSection>
-
-        <CardSection style={{backgroundColor: 'none'}}>
-            {this.startButton()}
-        </CardSection>
-        <CardSection>
-            {this.myProfileButton()}
         </CardSection>
 
       </Card>
@@ -131,7 +108,8 @@ class ContactList extends Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#C1C1C1'
+    backgroundColor: '#C1C1C1',
+    borderRadius: 15
   },
   input: {
     height: 30,
