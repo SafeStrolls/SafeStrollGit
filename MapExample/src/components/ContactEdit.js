@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import firebase from 'firebase';
 import ContactForm from './ContactForm';
 //import ContactInfo from './ContactInfo';
 import { contactUpdate, contactSave, contactDelete } from '../actions';
@@ -18,7 +17,6 @@ class ContactEdit extends Component {
 
 onButtonPress() {
   const { name, phone, uid } = this.props; //removed shift after phone
-  console.log("uid onbuttonpress " + this.props.uid);
   this.props.contactSave({ name, phone, uid: this.props.uid });
   Actions.pop(2); //vi får ha såhär tillfälligt tills vi löser hur man
   //kommer direkt till My Network!

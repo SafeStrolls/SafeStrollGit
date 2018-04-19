@@ -47,7 +47,7 @@ class Start extends Component {
               longitudeDelta: 0.0421,
               }}
           />
-          <CardSection>
+          <CardSection style={{ height: 200 }}>
               <ListView
                 enableEmptySections
                 dataSource={this.dataSource}

@@ -58,9 +58,11 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
-        <View style={{ alignItems: 'center', opacity: 0.5, borderRadius: 15}}>
-        <Image source={{uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1352737-200.png'}}
-                style={{width: 200, height: 170}} />
+        <View style={{ alignItems: 'center', opacity: 0.5, borderRadius: 15 }}>
+        <Image
+            source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1352737-200.png' }}
+            style={{ width: 200, height: 170 }}
+        />
         </View>
         <CardSection style={styles.cardSectionStyle}>
           <Input
@@ -83,11 +85,11 @@ class LoginForm extends Component {
 
           {this.renderError()}
 
-        <CardSection style={{backgroundColor: 'none', marginTop:10}}>
+        <CardSection style={{ backgroundColor: 'none', marginTop: 10 }}>
           {this.renderButton()}
         </CardSection>
 
-        <CardSection style={{borderRadius: 15, marginTop: 20, padding: 6}}>
+        <CardSection style={{ borderRadius: 15, marginTop: 20, padding: 6 }}>
           <View>
             <Text style={styles.textStyle}>
               Do you not have an account?

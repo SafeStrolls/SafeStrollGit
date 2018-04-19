@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+//import { Text } from 'react-native';
 import { Scene, Router, Actions, TabIcon } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import ContactList from './components/ContactList';
@@ -10,7 +10,7 @@ import SignUp from './components/SignUp';
 import Start from './components/Start';
 import MyProfile from './components/MyProfile';
 import ProfileEdit from './components/ProfileEdit';
-import Directions from './components/Directions';
+
 
 const RouterComponent = () => {
   return (
@@ -35,16 +35,23 @@ const RouterComponent = () => {
           <Scene
             key="mainTabbar"
             tabs
-            tabBarStyle={{ backgroundColor: 'lightblue',
+            tabBarStyle={{ backgroundColor: '#252579',
                            //flex: 1,
                            borderColor: 'black',
                            padding: 10 }}
-            //'#FFFFFF'
-
-            // component={TestComponent}
-            // initial
           >
 
+          <Scene
+            key="startTab"
+            title="Start"
+            icon={TabIcon}
+          >
+            <Scene
+              key="startPage"
+              component={Start}
+            />
+
+          </Scene>
 
             <Scene
               key="networkTab"
@@ -72,6 +79,7 @@ const RouterComponent = () => {
               title="Contact info"
               onRight={() => Actions.contactEdit()}
               rightTitle="Edit"
+              hideTabBar
 
             />
               <Scene
@@ -79,7 +87,6 @@ const RouterComponent = () => {
                 component={ContactEdit}
                 title="Edit Contact"
                 hideTabBar
-
               />
 
               <Scene
@@ -91,29 +98,23 @@ const RouterComponent = () => {
             </Scene>
 
             <Scene
-              key="startTab"
-              title="Start"
-              icon={TabIcon}
-              // tabIcon={{ width: 200 }}
-              // tabBarStyle={{ color: 'blue' }}
-            >
-              <Scene
-                key="startPage"
-                component={Start}
-              />
-
-            </Scene>
-
-            <Scene
               key="myProfile"
               title="My Profile"
               icon={TabIcon}
             >
-                <Scene
+            <Scene
                     key="myProfile"
                     component={MyProfile}
                     title="My profile"
-                />
+                    onRight={() => Actions.profileEdit()}
+                    rightTitle="Edit password"
+            />
+                  <Scene
+                    key="profileEdit"
+                    component={ProfileEdit}
+                    title="Edit my profile"
+                    hideTabBar
+                  />
 
             </Scene>
 

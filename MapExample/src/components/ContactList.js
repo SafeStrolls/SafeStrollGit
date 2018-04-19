@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
-import { ListView } from 'react-native';
+import { ListView, StyleSheet } from 'react-native';
 import { contactsFetch } from '../actions';
-import { Card, CardSection, Button } from './common';
+import { Card, CardSection, Input } from './common';
 import ListItem from './ListItem';
 
 class ContactList extends Component {
@@ -20,21 +19,6 @@ class ContactList extends Component {
     // this.props is still the old set of props
 
     this.createDataSource(nextProps);
-  }
-
-  startButton() {
-    return (
-      <Button onPress={() => Actions.start()}>
-        Start
-      </Button>
-    );
-  }
-  myProfileButton() {
-    return (
-      <Button onPress={() => Actions.myProfile()}>
-        My Profile
-      </Button>
-    );
   }
 
   formatData(data) {
@@ -114,13 +98,6 @@ class ContactList extends Component {
                   dataSource={this.dataSource}
                   renderRow={this.renderRow}
             />
-        </CardSection>
-
-        <CardSection style={{backgroundColor: 'none'}}>
-            {this.startButton()}
-        </CardSection>
-        <CardSection>
-            {this.myProfileButton()}
         </CardSection>
 
       </Card>
