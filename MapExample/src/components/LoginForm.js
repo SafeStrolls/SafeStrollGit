@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
@@ -15,6 +16,8 @@ class LoginForm extends Component {
   }
 
   onButtonPress() {
+    console.log('currentUser nedan:');
+    console.log(firebase.auth().currentUser);
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
@@ -85,7 +88,7 @@ class LoginForm extends Component {
 
           {this.renderError()}
 
-        <CardSection style={{ backgroundColor: 'none', marginTop: 10 }}>
+        <CardSection style={{ backgroundColor: 'transparent', marginTop: 10 }}>
           {this.renderButton()}
         </CardSection>
 

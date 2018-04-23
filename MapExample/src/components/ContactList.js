@@ -92,7 +92,7 @@ class ContactList extends Component {
             value={this.props.search}
           />
       </CardSection>
-        <CardSection>
+        <CardSection style={{ borderRadius: 15, marginTop: 5 }}>
             <ListView
                   enableEmptySections
                   dataSource={this.dataSource}
@@ -108,7 +108,8 @@ class ContactList extends Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#C1C1C1'
+    backgroundColor: '#C1C1C1',
+    borderRadius: 15
   },
   input: {
     height: 30,

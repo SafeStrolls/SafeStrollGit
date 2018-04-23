@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Scene, Router, Actions, TabIcon } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import ContactList from './components/ContactList';
@@ -35,10 +35,7 @@ const RouterComponent = () => {
           <Scene
             key="mainTabbar"
             tabs
-            tabBarStyle={{ backgroundColor: '#252579',
-                           //flex: 1,
-                           borderColor: 'black',
-                           padding: 10 }}
+            tabBarStyle={styles.tabBar}
           >
 
           <Scene
@@ -129,5 +126,16 @@ const RouterComponent = () => {
 
   );
 };
+
+const styles = StyleSheet.create({
+  tabBar: {
+    //backgroundColor: '#d1d1d1',
+    borderTopWidth: 1,
+    padding: 5,
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 }
+  }
+});
 
 export default RouterComponent;

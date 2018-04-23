@@ -3,8 +3,10 @@ import { Actions } from 'react-native-router-flux';
 import { EMAIL_CHANGED,
          PASSWORD_CHANGED,
          LOGIN_USER_SUCCESS,
+         LOGOUT_USER_SUCCESS,
          LOGIN_USER_FAIL,
          LOGIN_USER,
+         LOGOUT_USER,
          SIGN_UP_USER,
          SIGN_UP_SUCCESS,
          PROFILE_UPDATE,
@@ -44,6 +46,19 @@ export const loginUser = ({ email, password }) => {
         .then(user => loginUserSuccess(dispatch, user))
         .catch(() => loginUserFail(dispatch));
     });
+  };
+};
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    dispatch({ type: LOGOUT_USER });
+
+  firebase.auth().signOut()
+    .then(user => logoutSuccess(dispatch, user)
+    // .catch((error) => {
+    //   console.log(error);
+    // })
+  );
   };
 };
 
@@ -102,6 +117,14 @@ const loginUserSuccess = (dispatch, user) => {
   });
 
   Actions.main(); // byter till contactList scene
+};
+
+const logoutSuccess = (dispatch, user) => {
+  dispatch({
+    type: LOGOUT_USER_SUCCESS,
+    payload: user
+  });
+  Actions.auth();
 };
 
 const signUpSuccess = (dispatch, user) => {

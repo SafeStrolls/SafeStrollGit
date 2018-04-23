@@ -16,13 +16,13 @@ class ContactEdit extends Component {
   }
 
 onButtonPress() {
-  const { name, phone, uid } = this.props; //removed shift after phone
+  const { name, phone, uid } = this.props;
   this.props.contactSave({ name, phone, uid: this.props.uid });
   Actions.pop(2); //vi får ha såhär tillfälligt tills vi löser hur man
   //kommer direkt till My Network!
 }
 
-onAccept() { //denna funkar inte än... kontakten tas inte bort!
+onAccept() {
   const { name, phone, uid } = this.props;
   this.props.contactDelete({ name, phone, uid: this.props.uid });
   Actions.pop(2); //vi får ha såhär tillfälligt tills vi löser hur man

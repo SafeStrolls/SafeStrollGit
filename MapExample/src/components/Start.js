@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, ListView } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Card, CardSection, Button } from './common';
+import Communications from 'react-native-communications';
+import { Card, CardSection, Button, SOSButton } from './common';
 import { contactsFetch } from '../actions';
 import ListItem from './ListItem';
 
@@ -37,6 +38,12 @@ class Start extends Component {
   render() {
     return (
       <Card>
+          <CardSection style={{ backgroundColor: 'transparent' }}>
+            <SOSButton onPress={() => Communications.phonecall('112', true)}>
+              SOS
+             </SOSButton>
+          </CardSection>
+
           <MapView
             provider={PROVIDER_GOOGLE}
             style={styles.container}
@@ -47,7 +54,7 @@ class Start extends Component {
               longitudeDelta: 0.0421,
               }}
           />
-          <CardSection style={{ height: 200 }}>
+          <CardSection style={{ height: 150, borderRadius: 15 }}>
               <ListView
                 enableEmptySections
                 dataSource={this.dataSource}
@@ -55,7 +62,7 @@ class Start extends Component {
               />
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ backgroundColor: 'transparent' }}>
             <Button onPress={() => Actions.direction()}>
               Go home
             </Button>
@@ -75,6 +82,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15
   }
 });
+
 const mapStateToProps = state => {
   const contacts = _.map(state.contacts, (val, uid) => {
     return { ...val, uid };
