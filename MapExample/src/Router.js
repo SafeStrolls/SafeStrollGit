@@ -10,7 +10,9 @@ import SignUp from './components/SignUp';
 import Start from './components/Start';
 import MyProfile from './components/MyProfile';
 import ProfileEdit from './components/ProfileEdit';
-
+import Directions from './components/Directions';
+import GetAddress from './components/GetAddress';
+import GoingHome from './components/GoingHome';
 
 const RouterComponent = () => {
   return (
@@ -94,6 +96,16 @@ const RouterComponent = () => {
 
             </Scene>
 
+            <Scene
+              key="goingHome"
+              component={GoingHome}
+              title="Walk home"
+            />
+            <Scene
+              key="address"
+              component={GetAddress}
+              title="Search for address"
+            />
             <Scene
               key="myProfile"
               title="My Profile"

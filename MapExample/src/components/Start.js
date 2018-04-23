@@ -47,12 +47,16 @@ class Start extends Component {
           <MapView
             provider={PROVIDER_GOOGLE}
             style={styles.container}
-            initialRegion={{
-              latitude: 39.7392,
-              longitude: -104.9903,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-              }}
+            // region={this.state.locationCoordinates}
+            // onRegionChangeComplete={this.handleLocationChange}
+            // zoomEnabled
+            // scrollEnabled
+            // initialRegion={{
+            //   latitude: 39.7392,
+            //   longitude: -104.9903,
+            //   latitudeDelta: 0.0922,
+            //   longitudeDelta: 0.0421,
+            //   }}
           />
           <CardSection style={{ height: 150, borderRadius: 15 }}>
               <ListView
@@ -61,12 +65,6 @@ class Start extends Component {
                 renderRow={this.renderRow}
               />
           </CardSection>
-
-          <CardSection style={{ backgroundColor: 'transparent' }}>
-            <Button onPress={() => Actions.direction()}>
-              Go home
-            </Button>
-          </CardSection>
       </Card>
     );
   }
@@ -74,7 +72,7 @@ class Start extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: '50%',
+    height: '70%',
     width: '100%',
   },
   titleStyle: {
