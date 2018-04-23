@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import getDirections from 'react-native-google-maps-directions';
-import RNGooglePlaces from 'react-native-google-places';
+//import getDirections from 'react-native-google-maps-directions';
+//import RNGooglePlaces from 'react-native-google-places';
 
 import { connect } from 'react-redux';
 import { Text, ListView, View, TextInput, TouchableOpacity } from 'react-native';

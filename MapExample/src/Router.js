@@ -49,7 +49,21 @@ const RouterComponent = () => {
               key="startPage"
               component={Start}
             />
-
+            <Scene
+              key="goingHome"
+              component={GoingHome}
+              title="Walk home"
+            />
+            <Scene
+              key="direction"
+              component={Directions}
+              title="Go home"
+            />
+            <Scene
+              key="address"
+              component={GetAddress}
+              title="Search for address"
+            />
           </Scene>
 
             <Scene
@@ -96,16 +110,6 @@ const RouterComponent = () => {
 
             </Scene>
 
-            <Scene
-              key="goingHome"
-              component={GoingHome}
-              title="Walk home"
-            />
-            <Scene
-              key="address"
-              component={GetAddress}
-              title="Search for address"
-            />
             <Scene
               key="myProfile"
               title="My Profile"

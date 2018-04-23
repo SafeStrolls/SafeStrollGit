@@ -65,6 +65,13 @@ class Start extends Component {
                 renderRow={this.renderRow}
               />
           </CardSection>
+
+          <CardSection style={{ backgroundColor: 'transparent' }}>
+            <Button onPress={() => Actions.direction()}>
+              Go home
+            </Button>
+          </CardSection>
+
       </Card>
     );
   }
@@ -72,7 +79,7 @@ class Start extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: '70%',
+    height: '50%',
     width: '100%',
   },
   titleStyle: {
