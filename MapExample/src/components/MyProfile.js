@@ -2,16 +2,37 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardSection, Button, Spinner } from './common';
-import { logoutUser } from '../actions';
+import { Card, CardSection, Button, Spinner, Confirm } from './common';
+import { logoutUser, deleteUser } from '../actions';
 
 class MyProfile extends Component {
+    state = { showModal: false }
     //const user = firebase.auth().currentUser;
 
     onLogoutButtonPress() {
       const { email, password } = this.props;
 
       this.props.logoutUser({ email, password });
+    }
+
+    onDeleteAccountButtonPress() {
+      // this.setState({ showModal: !this.state.showModal });
+      //
+      // const { email, password } = this.props;
+      //
+      // this.props.deleteUser({ email, password });
+    }
+
+    onDecline() {
+      this.setState({ showModal: false });
+    }
+
+    onAccept() {
+      this.setState({ showModal: !this.state.showModal });
+
+      const { email, password } = this.props;
+
+      this.props.deleteUser({ email, password });
     }
 
     logoutButton() {
@@ -25,6 +46,15 @@ class MyProfile extends Component {
         </Button>
       );
     }
+
+    deleteAccountButton() {
+      return (
+        <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+        Delete Account
+        </Button>
+      );
+    }
+
 
   render() {
     const user = firebase.auth().currentUser;
@@ -50,6 +80,19 @@ class MyProfile extends Component {
             <CardSection style={{ backgroundColor: 'transparent' }}>
               {this.logoutButton()}
             </CardSection>
+
+            <CardSection style={{ backgroundColor: 'transparent' }}>
+              {this.deleteAccountButton()}
+            </CardSection>
+
+            <Confirm
+              visible={this.state.showModal}
+              onAccept={this.onAccept.bind(this)} //lägg till NÅTSOMREFTILLKONTAKTENIFRÅGA?
+              onDecline={this.onDecline.bind(this)}
+            >
+              Are you sure you want to delete your account?
+            </Confirm>
+
           </Card>
         );
   }
@@ -77,6 +120,6 @@ const mapStateToProps = () => {
   };
 
 export default connect(mapStateToProps,
-  { logoutUser })(MyProfile);
+  { logoutUser, deleteUser })(MyProfile);
 
 //export default MyProfile;

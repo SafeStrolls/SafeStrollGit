@@ -7,7 +7,10 @@ import { EMAIL_CHANGED,
          LOGIN_USER_FAIL,
          LOGIN_USER,
          LOGOUT_USER,
+         DELETE_USER,
+         DELETE_USER_SUCCESS,
          SIGN_UP_USER,
+         SIGN_UP_FAIL,
          SIGN_UP_SUCCESS,
          PROFILE_UPDATE,
          PROFILE_SAVE_SUCCESS
@@ -62,6 +65,17 @@ export const logoutUser = () => {
   };
 };
 
+export const deleteUser = () => {
+  return (dispatch) => {
+    dispatch({ type: DELETE_USER });
+
+    const thisUser = firebase.auth().currentUser;
+    thisUser.delete()
+    .then(user => deleteSuccess(dispatch, user)
+  );
+};
+};
+
 export const signUpUser = ({ email, password }) => {
   // firebase.auth().languageCode = 'it';
   // const appVerifier = window.recaptchaVerifier;
@@ -70,23 +84,12 @@ export const signUpUser = ({ email, password }) => {
     dispatch({ type: SIGN_UP_USER });
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(user => signUpSuccess(dispatch, user))
-      .catch(() => loginUserFail(dispatch));
-
-    // firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-    //   .then(user => signUpSuccess(dispatch, user))
-      // .then(() => (confirmationResult) {
-      //   SMS sent. Prompt user to type the code from the message, then sign the
-      //   user in with confirmationResult.confirm(code).
-      //   window.confirmationResult = confirmationResult;
-      //})
-      // .catch(() => loginUserFail(dispatch));
-      // // .catch(function (error)
-      //   Error; SMS not sent
-      //   ...
-      // });
+    .then(user => signUpSuccess(dispatch, user))
+    .catch(() => signUpFail(dispatch));
   };
 };
+
+
 export const profileSave = ({ email, password }) => {
   const { currentUser } = firebase.auth();
 
@@ -109,6 +112,10 @@ const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
 
+const signUpFail = (dispatch) => {
+  dispatch({ type: SIGN_UP_FAIL });
+};
+
 const loginUserSuccess = (dispatch, user) => {
   //from here we navigate the user to screen after login
   dispatch({
@@ -122,6 +129,14 @@ const loginUserSuccess = (dispatch, user) => {
 const logoutSuccess = (dispatch, user) => {
   dispatch({
     type: LOGOUT_USER_SUCCESS,
+    payload: user
+  });
+  Actions.auth();
+};
+
+const deleteSuccess = (dispatch, user) => {
+  dispatch({
+    type: DELETE_USER_SUCCESS,
     payload: user
   });
   Actions.auth();

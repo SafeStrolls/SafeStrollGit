@@ -16,8 +16,6 @@ class LoginForm extends Component {
   }
 
   onButtonPress() {
-    console.log('currentUser nedan:');
-    console.log(firebase.auth().currentUser);
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
@@ -49,7 +47,7 @@ class LoginForm extends Component {
   renderError() {
     if (this.props.error) {
       return (
-        <View style={{ backgroundColor: 'white' }}>
+        <View style={{ backgroundColor: 'transparent' }}>
           <Text style={styles.errorTextStyle}>
             {this.props.error}
           </Text>
@@ -61,10 +59,10 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
-        <View style={{ alignItems: 'center', opacity: 0.5, borderRadius: 15 }}>
+        <View style={{ alignItems: 'center', opacity: 0.8, borderRadius: 15 }}>
         <Image
-            source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1352737-200.png' }}
-            style={{ width: 200, height: 170 }}
+            source={{ uri: 'https://4vector.com/i/free-vector-street-lamp-clip-art_107509_Street_Lamp_clip_art_hight.png' }}
+            style={{ resizeMode: 'contain', width: 200, height: 170 }}
         />
         </View>
         <CardSection style={styles.cardSectionStyle}>

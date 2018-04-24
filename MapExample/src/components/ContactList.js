@@ -2,9 +2,13 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView, StyleSheet } from 'react-native';
+import firebase from 'firebase';
+import { Container, Item, Input, Icon } from 'native-base';
 import { contactsFetch } from '../actions';
-import { Card, CardSection, Input } from './common';
+import { Card, CardSection } from './common';
 import ListItem from './ListItem';
+//import SearchBar from './SearchBar';
+
 
 class ContactList extends Component {
   componentWillMount() {
@@ -76,6 +80,56 @@ class ContactList extends Component {
 
     this.dataSource = ds.cloneWithRows(contacts);
   }
+
+/////////////
+
+listenForItems(itemsRef) {
+  itemsRef.on('value', (snap) => {
+    const items = [];
+    snap.forEach((child) => {
+      items.push({
+        name: child.val().name,
+        phone: child.val().phonecall,
+      });
+    });
+
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(items)
+    });
+});
+}
+
+  firstSearch() {
+    this.searchDirectory(this.itemsRef);
+    console.log('inne i firstSearch');
+  }
+
+  searchDirectory(itemsRef) {
+    const searchText = this.state.searchText.toString();
+
+    if (searchText === '') {
+      this.listenForItems(itemsRef);
+    } else {
+itemsRef.orderByChild('name').on('value', (snap) => {   //denna rad funkar ej
+        console.log(snap.val());
+        const items = [];
+        snap.forEach((child) => {
+          items.push({
+            name: child.val().name,
+            phone: child.val().phone,
+          });
+        });
+
+
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(items)
+        });
+      });
+    }
+  }
+
+  ///////
+
   renderRow(contact) {
     return <ListItem contact={contact} />;
   }
@@ -83,16 +137,24 @@ class ContactList extends Component {
   render() {
     return (
       <Card>
-      <CardSection style={styles.container}>
+        <CardSection style={{ height: 80, backgroundColor: 'transparent' }}>
+          <Container searchBar rounded>
+          <Item style={{ backgroundColor: '#d1d1d1', borderRadius: 15 }}>
+          <Icon name="ios-search" style={{ paddingLeft: 5 }} />
           <Input
-            //style={input}
-            label="Search"
-            placeholder="Search..."
-            onChangeText={(text) => console.log('searching for ', text)}
-            value={this.props.search}
+            returnKeyType='search'
+            onChangeText={(text) => this.setState({ searchText: text })}
+            onSubmitEditing={() => this.firstSearch()}
+            placeholder="Search"
           />
-      </CardSection>
-        <CardSection style={{ borderRadius: 15, marginTop: 5 }}>
+          </Item>
+          {  // <Button transparent>
+            //   <Text>Search</Text>
+            // </Button>
+          }
+          </Container>
+        </CardSection>
+        <CardSection style={{ height: 200, borderRadius: 15, marginTop: 5 }}>
             <ListView
                   enableEmptySections
                   dataSource={this.dataSource}
@@ -105,22 +167,22 @@ class ContactList extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#C1C1C1',
-    borderRadius: 15
-  },
-  input: {
-    height: 30,
-    flex: 1,
-    paddingHorizontal: 8,
-    fontSize: 15,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 2,
-  }
-
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     alignItems: 'center',
+//     backgroundColor: '#C1C1C1',
+//     borderRadius: 15
+//   },
+//   input: {
+//     height: 30,
+//     flex: 1,
+//     paddingHorizontal: 8,
+//     fontSize: 15,
+//     backgroundColor: '#FFFFFF',
+//     borderRadius: 2,
+//   }
+//
+// });
 
 const mapStateToProps = state => {
   const contacts = _.map(state.contacts, (val, uid) => {

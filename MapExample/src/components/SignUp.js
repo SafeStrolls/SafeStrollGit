@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 //import firebase from 'firebase';
 import { connect } from 'react-redux';
 import {
@@ -33,6 +33,19 @@ class SignUp extends Component {
     this.props.signUpUser({ email, password });
   }
 
+  renderError() {
+    if (this.props.error) {
+      console.log('there is an error');
+      return (
+        <View style={{ backgroundColor: 'transparent' }}>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -55,7 +68,9 @@ class SignUp extends Component {
             />
           </CardSection>
 
-        <CardSection>
+          {this.renderError()}
+
+        <CardSection style={{ backgroundColor: 'transparent' }}>
           <Button onPress={this.onSignButtonPress.bind(this)}>
             Create
           </Button>
@@ -65,9 +80,18 @@ class SignUp extends Component {
   }
 }
 
+const styles = {
+  errorTextStyle: {
+    fontSize: 20,
+    alignSelf: 'center',
+    color: 'red'
+  }
+};
+
+
 const mapStateToProps = ({ auth }) => {
-  const { email, password } = auth;
-  return { email, password };
+  const { email, password, error } = auth;
+  return { email, password, error };
 };
 
 export default connect(mapStateToProps, {

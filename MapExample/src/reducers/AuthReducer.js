@@ -3,6 +3,7 @@ import { EMAIL_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGOUT_USER_SUCCESS,
   LOGIN_USER_FAIL,
+  SIGN_UP_FAIL,
   LOGIN_USER,
   LOGOUT_USER,
   PROFILE_UPDATE
@@ -34,6 +35,11 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Authentication Failed.', password: '', loading: false };
+    case SIGN_UP_FAIL:
+      return { ...state,
+        error: 'There is already an account with this email! Try a different one.',
+        email: '',
+        loading: false };
     case PROFILE_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     default:
