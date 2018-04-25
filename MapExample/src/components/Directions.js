@@ -2,11 +2,14 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 //import getDirections from 'react-native-google-maps-directions';
 //import RNGooglePlaces from 'react-native-google-places';
-
+//import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { connect } from 'react-redux';
-import { Text, ListView } from 'react-native';
+import {
+  Text,
+  ListView
+ } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Button, Input } from './common';
 import { contactsFetch } from '../actions';
 import ListItemPosition from './ListItemPosition';
 
@@ -34,42 +37,7 @@ class Directions extends Component {
     this.dataSource = ds.cloneWithRows(contacts);
   }
 
- //  handleGetDirections = () => {
- //   const data = {
- //      source: {
- //       latitude: -33.8356372,
- //       longitude: 18.6947617
- //     },
- //     destination: {
- //       latitude: -33.8600024,
- //       longitude: 18.697459
- //     },
- //     params: [
- //       {
- //         key: 'travelmode',
- //         value: 'driving'        // may be "walking", "bicycling" or "transit" as well
- //       },
- //       {
- //         key: 'dir_action',
- //         value: 'navigate'
- //         // this instantly initializes navigation using the given travel mode
- //       }
- //     ]
- //   };
- //
- //   getDirections(data);
- // }
-// openSearchModal() {
-//   RNGooglePlaces.openPlacePickerModal({
-//     latitude: 53.544389,
-//     longitude: -113.490927,
-//     radius: 0.01 // 10 meters
-//   })
-//   .then((place) => {
-//     console.log(place);
-//   })
-//   .catch(error => console.log(error.message));
-// }
+
  renderRow(contact) {
    return (
      <ListItemPosition
@@ -87,8 +55,8 @@ class Directions extends Component {
             secureTextEntry
             label="From"
             placeholder="Hi, where from?"
-            onChangeText={() => Actions.address()}
-            value={this.props.direction}
+            //onChangeText={this.handleInput.bind(this, 'WhereFrom')}
+            //value={this.props.direction}
           />
         </CardSection>
         <CardSection>
@@ -96,8 +64,8 @@ class Directions extends Component {
             secureTextEntry
             label="To"
             placeholder="Where to?"
-            onChangeText={() => Actions.address()}
-            value={this.props.direction}
+            //onChangeText={this.handleInput.bind(this, 'WhereTo')}
+            //value={this.props.direction}
           />
         </CardSection>
 
@@ -120,7 +88,8 @@ class Directions extends Component {
           renderRow={this.renderRow}
         />
         </CardSection>
-        </Card>
+      </Card>
+
     );
   }
 }
@@ -132,7 +101,11 @@ const styles = {
     paddingTop: 10
   }
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  // const inputData = _.map(state.inputData, (key, value) => {
+  //   return { ...key, value };
+  // });
+  //   return { inputData };
   const contacts = _.map(state.contacts, (val, uid) => {
     return { ...val, uid };
   });
@@ -141,30 +114,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { contactsFetch })(Directions);
-
-//<CardSection>
-  // <View>
-  //   <TextInput
-  //     placeholder='Where to?'
-  //     onChangeText={this.handleLocationInput}
-  //     value={this.state.locationInput}
-  //     onSubmitEdiiting={this.handleSubmit.bind(this)}
-  //   />
-  //   <View>
-  //     <TouchableOpacity
-  //       onPress={this.callout.bind(this)}
-  //     />
-  //     </View>
-  //
-  // </View>
-//</CardSection>
-
-// <CardSection>
-//   <View>
-//     <TouchableOpacity
-//       onPress={() => this.openSearchModal()}
-//     >
-//       <Text>Open Place Picker</Text>
-//     </TouchableOpacity>
-//   </View>
-// </CardSection>

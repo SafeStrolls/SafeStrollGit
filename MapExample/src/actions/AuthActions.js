@@ -1,4 +1,7 @@
 import firebase from 'firebase';
+//import update from 'react-addons-update';
+//import Geolocation from 'react-native-geolocation-service';
+//import { Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { EMAIL_CHANGED,
          PASSWORD_CHANGED,

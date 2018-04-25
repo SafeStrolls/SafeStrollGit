@@ -833,6 +833,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		A4EB7091B04F43C492D022D6 /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
@@ -866,6 +867,22 @@
 				A1CE4557D80B4D50B72C4AC8 /* SF-UI-Text-Regular.otf */,
 				1F66988DCA574FECB2A42D91 /* Skia.ttf */,
 				3DCB59084C884EFDB9B67A9E /* Times New Roman.ttf */,
+=======
+		F6974DA8681C4B84B1030DC2 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				6BE611F1A62C449C8F1799C9 /* Entypo.ttf */,
+				5C67B613522C4428A366C6B7 /* EvilIcons.ttf */,
+				CF2DDA9C7B2E40C3B5EFEB8B /* Feather.ttf */,
+				45C1A5D7F09A446C8D7339EC /* FontAwesome.ttf */,
+				01F058AB813A40BEB353525E /* Foundation.ttf */,
+				9B9353F5939940D6B2FED525 /* Ionicons.ttf */,
+				AAE3A539F8584436AD0E6CC9 /* MaterialCommunityIcons.ttf */,
+				2BC774A5212B46538FF9A052 /* MaterialIcons.ttf */,
+				5980984E59314C4990762A12 /* Octicons.ttf */,
+				CE6491E539164B9C92D07CE9 /* SimpleLineIcons.ttf */,
+				33F202129BCD4C24BD0027E8 /* Zocial.ttf */,
+>>>>>>> current location on start and goingHome
 			);
 			name = Resources;
 			sourceTree = "<group>";
