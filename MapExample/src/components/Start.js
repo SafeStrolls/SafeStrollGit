@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { StyleSheet, ListView } from 'react-native';
+import { StyleSheet, ListView, Text } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Communications from 'react-native-communications';
 import { Card, CardSection, Button, SOSButton } from './common';
@@ -58,7 +58,10 @@ class Start extends Component {
             //   longitudeDelta: 0.0421,
             //   }}
           />
-          <CardSection style={{ height: 150, borderRadius: 15 }}>
+          <CardSection style={{ backgroundColor: 'transparent' }}>
+            <Text style={styles.titleStyle}>Contacts that are nearby:</Text>
+          </CardSection>
+          <CardSection style={{ height: 150 }}>
               <ListView
                 enableEmptySections
                 dataSource={this.dataSource}

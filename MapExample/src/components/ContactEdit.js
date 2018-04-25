@@ -37,13 +37,13 @@ onDecline() {
     return (
       <Card>
         <ContactForm />
-          <CardSection>
+          <CardSection style={{ backgroundColor: 'transparent' }}>
             <Button onPress={this.onButtonPress.bind(this)}>
               Save Changes
             </Button>
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ backgroundColor: 'transparent' }}>
             <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
               Delete Contact
             </Button>

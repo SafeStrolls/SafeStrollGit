@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView, StyleSheet } from 'react-native';
-import firebase from 'firebase';
+import { ListView } from 'react-native';
+//import firebase from 'firebase';
 import { Container, Item, Input, Icon } from 'native-base';
 import { contactsFetch } from '../actions';
 import { Card, CardSection } from './common';
@@ -137,7 +137,7 @@ itemsRef.orderByChild('name').on('value', (snap) => {   //denna rad funkar ej
   render() {
     return (
       <Card>
-        <CardSection style={{ height: 80, backgroundColor: 'transparent' }}>
+        <CardSection style={{ height: 70, backgroundColor: 'transparent' }}>
           <Container searchBar rounded>
           <Item style={{ backgroundColor: '#d1d1d1', borderRadius: 15 }}>
           <Icon name="ios-search" style={{ paddingLeft: 5 }} />
@@ -154,7 +154,7 @@ itemsRef.orderByChild('name').on('value', (snap) => {   //denna rad funkar ej
           }
           </Container>
         </CardSection>
-        <CardSection style={{ height: 200, borderRadius: 15, marginTop: 5 }}>
+        <CardSection style={{ height: 450 }}>
             <ListView
                   enableEmptySections
                   dataSource={this.dataSource}

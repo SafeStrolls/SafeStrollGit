@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //import RNGooglePlaces from 'react-native-google-places';
 
 import { connect } from 'react-redux';
-import { Text, ListView, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, ListView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Input, Button } from './common';
 import { contactsFetch } from '../actions';
@@ -101,13 +101,13 @@ class Directions extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{ backgroundColor: 'transparent' }}>
           <Button onPress={() => Actions.goingHome()}>
             Start going home
           </Button>
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{ backgroundColor: 'transparent' }}>
           <Text style={styles.textStyle}>
             Choose contacts who will see your position:
           </Text>

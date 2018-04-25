@@ -26,7 +26,7 @@ onTextPress() {
       <Card>
         <ContactForm />
 
-          <CardSection>
+          <CardSection style={{ backgroundColor: 'transparent' }}>
             <Button onPress={this.onTextPress.bind(this)}>
               Send Message
             </Button>

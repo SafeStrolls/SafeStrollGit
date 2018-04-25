@@ -16,8 +16,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="Splashicon" translatesAutoresizingMaskIntoConstraints="NO" id="a9S-hL-AkZ">
-                    <rect key="frame" x="-21" y="-1" width="522" height="504"/>
+                    <rect key="frame" x="-23" y="-1" width="522" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.14316239953041077" green="0.14610806107521057" blue="0.47525537014007568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.1450980392" green="0.1450980392" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

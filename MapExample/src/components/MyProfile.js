@@ -63,7 +63,7 @@ class MyProfile extends Component {
 
         return (
           <Card>
-            <CardSection style={{ height: 50, borderRadius: 15 }}>
+            <CardSection style={{ height: 50 }}>
               <Text style={styles.titleStyle}>
                 Email:
               </Text>
@@ -71,7 +71,7 @@ class MyProfile extends Component {
                 {email}
               </Text>
             </CardSection>
-            <CardSection style={{ height: 50, borderRadius: 15 }}>
+            <CardSection style={{ height: 50 }}>
               <Text style={styles.titleStyle}>
                 Password: ******
               </Text>

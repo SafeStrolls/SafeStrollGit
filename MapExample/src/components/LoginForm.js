@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+//import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
@@ -59,13 +59,13 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
-        <View style={{ alignItems: 'center', opacity: 0.8, borderRadius: 15 }}>
+        <View style={{ alignItems: 'center', opacity: 0.8 }}>
         <Image
             source={{ uri: 'https://4vector.com/i/free-vector-street-lamp-clip-art_107509_Street_Lamp_clip_art_hight.png' }}
             style={{ resizeMode: 'contain', width: 200, height: 170 }}
         />
         </View>
-        <CardSection style={styles.cardSectionStyle}>
+        <CardSection>
           <Input
             label="Email"
             placeholder="email@gmail.com"
@@ -74,7 +74,7 @@ class LoginForm extends Component {
           />
         </CardSection>
 
-        <CardSection style={styles.cardSectionStyle}>
+        <CardSection>
           <Input
           secureTextEntry
           label="Password"
@@ -90,7 +90,7 @@ class LoginForm extends Component {
           {this.renderButton()}
         </CardSection>
 
-        <CardSection style={{ borderRadius: 15, marginTop: 20, padding: 6 }}>
+        <CardSection style={{ marginTop: 20, padding: 6 }}>
           <View>
             <Text style={styles.textStyle}>
               Do you not have an account?
@@ -115,9 +115,6 @@ const styles = {
     alignSelf: 'center',
     color: 'black',
     paddingTop: 10
-  },
-  cardSectionStyle: {
-    borderRadius: 15
   }
 };
 
